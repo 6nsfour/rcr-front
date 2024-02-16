@@ -1,0 +1,33 @@
+ <div class="login-container">
+  <div class="card login-card">
+    <div class="card-body bg-neutral rounded-lg flex-col justify-between">
+      <div class="text-center font-bold">Se connecter</div>
+      <form action="" [formGroup]="loginForm" (ngSubmit)="login()" class="flex flex-col justify-between items-center">
+        <div class="space-y-2">
+          <div>
+
+            <label class="text-xs font-semibold" for="email"> Email</label>
+            <input
+              formControlName="email"
+              type="email"
+              id="email"
+              class="w-full rounded-md p-2 bg-base-100"
+            />
+          </div>
+          <div>
+            <label class="text-xs font-semibold" for="password">Mot de passe</label>
+            <input
+              formControlName="password"
+              type="password"
+              id="password"
+              class="w-full rounded-md p-2 bg-base-100"
+            />
+          </div>
+        </div>
+       <button class="btn mt-5 w-1/2 bg-accent text-white" type="submit">Se connecter</button>
+      </form>
+      <div class="text-center text-xs hover:underline hover:cursor-pointer hover:text-blue-500" (click)="goToRegister()">S'inscrire</div>
+    </div>
+  </div>
+</div>
+
