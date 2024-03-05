@@ -14,6 +14,8 @@ export class HomeComponent {
     private router: Router,
   ) {}
 
+  //TODO : fetch les resources avec le back.
+  resources = [1,2,3,4,5,6,7,9,9,9]
   logout(): void {
     this.cookieService.delete('authToken');
     this.router.navigate(['login']);

@@ -1,4 +1,44 @@
-<p>home works!</p>
-<button (click)="logout()">Logout</button>
-<button (click)="checkRight()">Check Right</button>
-<button class="btn" (click)="goToLogin()">go to lgin</button>
+<app-header />
+<div class="grid grid-cols-5 salut gap-5">
+    <div class="bg-red-400"></div>
+    <div class="bg-green-400 col-span-3">
+        <div class="bg-white rounded-xl">
+            <div class="card">
+                <div class="card-body">
+                    <div class="flex justify-between">
+                        <div class="flex space-x-10 items-center">
+                            <div class="text-3xl font-bold">Ressources</div>
+                            <div class="dropdown">
+                                <div tabindex="0" role="button" class="">Categorie<i class="fa-solid fa-caret-down px-3"></i></div>
+                                <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52">
+                                  <li><a>Item 1</a></li>
+                                  <li><a>Item 2</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown">
+                                <div tabindex="0" role="button" class="">Relation<i class="fa-solid fa-caret-down px-3"></i></div>
+                                <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52">
+                                    <li><a>Item 1</a></li>
+                                    <li><a>Item 2</a></li>
+                                </ul>
+                            </div>
+                              <div class="dropdown">
+                                <div tabindex="0" role="button" class="">Type<i class="fa-solid fa-caret-down px-3"></i></div>
+                                <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52">
+                                  <li><a>Item 1</a></li>
+                                  <li><a>Item 2</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <input type="text" placeholder="Chercher..." >
+                    </div>
+                    @for (resource of resources; track $index) {
+                        <!-- envoyer la resource au composant resource-card pour recuperer les valeurs -->
+                        <app-resource-card></app-resource-card>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-black"></div>
+</div>
