@@ -2,20 +2,24 @@
   <div class="card register-card">
     <div class="card-body bg-neutral rounded-lg flex-col justify-between">
       <div class="text-center font-bold">S'inscrire</div>
-      <form action="" [formGroup]="registerForm" (ngSubmit)="log()" class="flex flex-col justify-between items-center">
+      <form action="" [formGroup]="registerForm" (ngSubmit)="Register()" class="flex flex-col justify-between items-center">
         <div class="space-y-2">
           <div>
             <label class="text-xs font-semibold" for="lastname">Nom</label>
             <input
+
+              [ngStyle]="{'border': this.registerForm.controls['lastname'].valid || this.registerForm.controls['lastname'].value == ''? '' : '3px solid #f69697'}"
               formControlName="lastname"
               type="text"
               id="lastname"
               class="w-full rounded-md p-2 bg-base-100"
             />
+
           </div>
           <div>
             <label class="text-xs font-semibold" for="firstname">Prénom</label>
             <input
+              [ngStyle]="{'border': this.registerForm.controls['firstname'].valid || this.registerForm.controls['firstname'].value == ''? '' : '3px solid #f69697'}"
               formControlName="firstname"
               type="text"
               id="firstname"
@@ -25,15 +29,19 @@
           <div>
             <label class="text-xs font-semibold" for="email">Email</label>
             <input
+              [ngStyle]="{'border': this.registerForm.controls['email'].valid || this.registerForm.controls['email'].value == ''? '' : '3px solid #f69697'}"
               formControlName="email"
               type="email"
               id="email"
               class="w-full rounded-md p-2 bg-base-100"
             />
+            <p [hidden]="!emailWrong">Cette adresse email est déjà utilisée</p>
+
           </div>
           <div>
             <label class="text-xs font-semibold" for="password">Mot de passe</label>
             <input
+              [ngStyle]="{'border': this.registerForm.controls['password'].valid || this.registerForm.controls['password'].value == ''? '' : '3px solid #f69697'}"
               formControlName="password"
               type="password"
               id="password"
@@ -43,6 +51,7 @@
           <div>
             <label class="text-xs font-semibold" for="confirmPassword">Confirmer le mot de passe</label>
             <input
+              [ngStyle]="{'border': this.registerForm.controls['confirmPassword'].valid || this.registerForm.controls['confirmPassword'].value == ''? '' : '3px solid #f69697'}"
               formControlName="confirmPassword"
               type="password"
               id="confirmPassword"
@@ -50,7 +59,8 @@
             />
           </div>
         </div>
-        <button class="btn mt-5 w-1/2 bg-accent text-white" type="submit">S'inscrire</button>
+        <p></p>
+        <button class="btn mt-5 w-1/2 bg-accent text-white" type="submit" [disabled]="registerForm.invalid" >S'inscrire</button>
       </form>
     </div>
   </div>

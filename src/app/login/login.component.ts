@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {Router, UrlTree} from "@angular/router";
 import { LoginForm } from "../model/authentification";
 import { AuthentificationService } from "../service/authentification.service";
+import {getXHRResponse} from "rxjs/internal/ajax/getXHRResponse";
 
 @Component({
   selector: "app-login",
@@ -22,14 +23,24 @@ export class LoginComponent {
     password: new FormControl(''),
   });
 
+  salut = false
+
   login(): void {
-    
+
     const body: LoginForm = {
       email: this.loginForm.getRawValue().email,
       password: this.loginForm.getRawValue().password,
     }
 
-    this.authService.login(body).subscribe(() => {
+
+
+    this.authService.login(body).subscribe((data: any) => {
+      if (this.salut) {
+        console.log(data, 'caca')
+
+      } else {
+        console.log('prout')
+      }
       this.router.navigate(['home']);
     });
   }
