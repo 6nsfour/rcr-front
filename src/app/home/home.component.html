@@ -1,4 +1,49 @@
-<p>home works!</p>
-<button (click)="logout()">Logout</button>
-<button (click)="checkRight()">Check Right</button>
-<button class="btn" (click)="goToLogin()">go to lgin</button>
+<app-header />
+<div class="grid grid-cols-5 gap-5 mt-5">
+   <div>
+      <app-favorites />
+   </div>
+   <div class="col-span-3 bg-white rounded-xl">
+      <div class="flex justify-between items-center p-6">
+         <div class="flex space-x-10 items-center">
+            <div class="text-3xl font-bold">Ressources</div>
+            <div class="dropdown">
+               <div tabindex="0" role="button" class="">Categorie<i class="fa-solid fa-caret-down px-3"></i></div>
+               <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52">
+                  @for (categorie of resourceCategories; track $index) {
+                  <li><a>{{categorie.value}}</a></li>
+                  }
+               </ul>
+            </div>
+            <div class="dropdown">
+               <div tabindex="0" role="button" class="">Relation<i class="fa-solid fa-caret-down px-3"></i></div>
+               <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52">
+                  @for (relation of resourceRelations; track $index) {
+                  <li><a>{{relation.value}}</a></li>
+                  }
+               </ul>
+            </div>
+            <div class="dropdown">
+               <div tabindex="0" role="button" class="">Type<i class="fa-solid fa-caret-down px-3"></i></div>
+               <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52">
+                  @for (type of resourceType; track $index) {
+                  <li><a>{{type.value}}</a></li>
+                  }
+               </ul>
+            </div>
+         </div>
+         <div class="bg-base-100 p-1 px-3 rounded-3xl">
+            <input type="text" placeholder="Chercher..." class="bg-base-100">
+            <i class="fa-solid fa-magnifying-glass"></i>
+         </div>
+      </div>
+      <div class="card resource-card overflow-scroll">
+         <div class="card-body">
+            @for (resource of resources; track $index) {
+            <app-resource-card [resource]="resource" class="border-b p-4 border-black" />
+            }
+         </div>
+      </div>
+   </div>
+   <div class="bg-black"></div>
+</div>
