@@ -32,15 +32,7 @@ export class LoginComponent {
       password: this.loginForm.getRawValue().password,
     }
 
-
-
     this.authService.login(body).subscribe((data: any) => {
-      if (this.salut) {
-        console.log(data, 'caca')
-
-      } else {
-        console.log('prout')
-      }
       this.router.navigate(['home']);
     });
   }

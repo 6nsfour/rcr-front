@@ -1,4 +1,10 @@
 <div class="register-container">
+  <div class="toast toast-top toast-end" *ngIf="emailWrong">
+    <div class="alert alert-error px-2 py-1">
+      <span class="text-white text-xs">Cette adresse email est déjà utilisée.</span>
+    </div>
+
+  </div>
   <div class="card register-card">
     <div class="card-body bg-neutral rounded-lg flex-col justify-between">
       <div class="text-center font-bold">S'inscrire</div>
@@ -35,7 +41,6 @@
               id="email"
               class="w-full rounded-md p-2 bg-base-100"
             />
-            <p [hidden]="!emailWrong">Cette adresse email est déjà utilisée</p>
 
           </div>
           <div>
@@ -65,4 +70,3 @@
     </div>
   </div>
 </div>
-

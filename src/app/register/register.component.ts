@@ -46,13 +46,24 @@ constructor(
       password: this.registerForm.getRawValue().password,
     }
 
-    this.authService.register(body).subscribe((response: any) => {
-        console.log('ahahahahahaha');
-        if (response.error == "email_error") {
-          return this.emailWrong = true;
-        }
+    this.authService.register(body).subscribe(
 
-        return this.router.navigate(['login'])
+      (response: any) => {
+
+      this.manageEmail(response);
+      console.log(response)
+
     })
   }
+
+  manageEmail(response : any) : boolean | Promise<boolean> {
+    if (response.error == "email_error") {
+      return this.emailWrong = true;
+    }
+
+    else {
+      return this.router.navigate(['home'])
+    }
+  }
+
 }
