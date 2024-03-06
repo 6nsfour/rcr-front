@@ -1,10 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginForm, RegisterForm } from '../model/authentification';
 import { SharedService } from './shared.service';
 import { Observable, tap } from 'rxjs';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,6 @@ export class AuthentificationService {
     private http: HttpClient,
     private cookieService: CookieService,
     private sharedService: SharedService,
-    private router: Router,
   ) {}
 
   login(data: LoginForm): Observable<any> {

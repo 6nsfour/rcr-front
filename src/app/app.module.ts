@@ -9,6 +9,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { ResourceCardComponent } from './resource-card/resource-card.component';
+import {FavoritesComponent} from "./favorites/favorites.component";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { ResourceCardComponent } from './resource-card/resource-card.component';
     RegisterComponent,
     HomeComponent,
     HeaderComponent,
-    ResourceCardComponent
+    ResourceCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +26,7 @@ import { ResourceCardComponent } from './resource-card/resource-card.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FavoritesComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
