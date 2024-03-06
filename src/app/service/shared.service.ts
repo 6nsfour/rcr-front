@@ -26,7 +26,6 @@ export class SharedService {
         Authorization: `Bearer ${authToken}`,
       });
     } else {
-      console.error('Authentication token is missing.');
       return new HttpHeaders();
     }
   }
