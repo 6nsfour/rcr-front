@@ -32,13 +32,11 @@
                         </div>
                         <input type="text" placeholder="Chercher..." >
                     </div>
-                    @for (resource of resources; track $index) {
-                        <!-- envoyer la resource au composant resource-card pour recuperer les valeurs -->
-                        <app-resource-card></app-resource-card>
-                    }
                 </div>
             </div>
         </div>
     </div>
-    <div class="bg-black"></div>
+    <div class="bg-[#98C7FF] col-span-1 p-2 flex flex-col justify-between">
+      <app-chat />
+    </div>
 </div>

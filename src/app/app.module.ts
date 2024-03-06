@@ -9,6 +9,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { ResourceCardComponent } from './resource-card/resource-card.component';
+import { ChatComponent } from './chat/chat.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -17,15 +19,17 @@ import { ResourceCardComponent } from './resource-card/resource-card.component';
     RegisterComponent,
     HomeComponent,
     HeaderComponent,
-    ResourceCardComponent
+    ResourceCardComponent,
+    ChatComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        NgOptimizedImage,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
