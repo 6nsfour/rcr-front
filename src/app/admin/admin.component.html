@@ -1,0 +1,91 @@
+<app-header />
+<div class="overflow-x-auto">
+  <table class="table w-full">
+    <thead>
+    <tr>
+      <th>Administrateur</th>
+      <th>Id</th>
+      <th>Titre</th>
+      <th>Contenu</th>
+      <th>Modifier</th>
+      <th>Supprimer</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let resource of resources; let i = index" class="hover">
+      <th>{{ i + 1 }}</th>
+      <td data-label="Id">{{ resource.id }}</td>
+      <td data-label="Titre">{{ resource.title }}</td>
+      <td data-label="Contenu">{{ resource.content }}</td>
+      <td data-label="Modifier"><button (click)="openEditModal(resource)"><i class="fa-solid fa-wrench"></i></button></td>
+      <td data-label="Supprimer"><button (click)="deleteResource(resource.id)"><i class="fa-solid fa-trash"></i></button></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <th>Administrateur</th>
+      <th>Id</th>
+      <th>Titre</th>
+      <th>Contenu</th>
+      <th><i class="fa-solid fa-wrench"></i></th>
+      <th><i class="fa-solid fa-trash"></i></th>
+    </tr>
+    </tfoot>
+  </table>
+</div>
+
+  <!-- Modal -->
+  <dialog id="editResourceModal" class="modal" [open]="isModalOpen">
+    <div class="modal-box w-full max-w-md mx-auto mt-20 relative">
+      <button class="btn btn-sm btn-circle absolute right-2 top-2" (click)="closeModal()">✕</button>
+      <h3 class="font-bold text-lg text-center">Modifier la Ressource</h3>
+      <form class="py-4" (ngSubmit)="updateResource(selectedResource.id, selectedResource)">
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Titre</span>
+          </label>
+          <input type="text" [(ngModel)]="selectedResource.title" name="title" class="input input-bordered" />
+        </div>
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Contenu</span>
+          </label>
+          <textarea [(ngModel)]="selectedResource.content" name="content" class="textarea textarea-bordered"></textarea>
+        </div>
+        <div>
+          <label class="label">
+            <span class="label-text">Catégorie</span>
+          </label>
+          <input value="Catégorie" name="catégorie" class="input input-bordered" />
+        </div>
+      <div>
+        <label class="label">
+          <span class="label-text">Portée</span>
+        </label>
+        <input [(ngModel)]="selectedResource.reach.value" name="reach" class="input input-bordered" />
+      </div>
+
+        <div>
+          <label class="label">
+            <span class="label-text">Relation</span>
+          </label>
+          <input value="Relation" name="reach" class="input input-bordered"/>
+        </div>
+
+        <div>
+          <label class="label">
+            <span class="label-text">Status</span>
+          </label>
+          <input  name="reach" class="input input-bordered" value="Publiée"/>
+        </div>
+
+
+    <div class="modal-action justify-between">
+      <button class="btn btn-warning">Archiver</button>
+      <button type="submit" class="btn">Mettre à jour</button>
+      <button class="btn btn-success">Publier</button>
+    </div>
+    </form>
+    </div>
+  </dialog>
+
