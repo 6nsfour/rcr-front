@@ -1,9 +1,12 @@
 export interface ResourceDTO {
-  title : string,
-  categorie : string,
-  relation : string,
-  reach : string,
-  content : string,
+  title: string,
+  content: string,
+  categories: number[],
+  relations: number[],
+  type_id: number,
+  reach_id: number,
+  status_id: number,
+  user_id: string,
   file: File | null,
 }
 

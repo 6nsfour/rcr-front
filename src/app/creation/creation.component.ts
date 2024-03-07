@@ -3,6 +3,8 @@ import {ResourceService} from "../service/resource.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ResourceDTO} from "../model/resource";
 import {Editor, toHTML} from "ngx-editor";
+import { CategoryDTO } from '../model/category';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-creation',
@@ -20,21 +22,25 @@ export class CreationComponent implements OnInit, OnDestroy {
 
   createResourceForm : FormGroup = new FormGroup({
     title : new FormControl(null, Validators.required),
-    categorie : new FormControl(null, Validators.required),
-    relation : new FormControl(null, Validators.required),
+    categories : new FormControl(null, Validators.required),
+    relations : new FormControl(null, Validators.required),
+    type : new FormControl(null, Validators.required),
     reach : new FormControl(null, Validators.required),
     content : new FormControl(null, Validators.required),
     file_upload : new FormControl(null)
   })
 
-  types = null;
-  categories = null;
-  relations = null;
+  types: any = null;
+  categories: any = null;
+  relations: any = null;
+  reachs: any = null;
+
   html = '';
 
   ngOnInit(): void {
     this.getCategories();
     this.getTypes();
+    this.getReach();
     this.getRelations();
     this.editor = new Editor();
   }
@@ -56,26 +62,37 @@ export class CreationComponent implements OnInit, OnDestroy {
     })
   }
 
-  getCategories() {
-    this.resourceService.getCategories().subscribe((categories: any) => {
+  getCategories(): Subscription {
+    return this.resourceService.getCategories().subscribe((categories: any) => {
       this.categories = categories;
     })
   }
 
-  log(): void {
-    console.log(this.html)
+  getReach() {
+    this.resourceService.getReach().subscribe((reach: any) => {
+      this.reachs = reach;
+    })
   }
+
 
   createResource() : void {
     const rawValue = this.createResourceForm.getRawValue();
     const body : ResourceDTO = {
       title : rawValue.title,
-      categorie : rawValue.categorie,
-      relation : rawValue.relation,
-      reach : rawValue.reach,
+      categories : rawValue.categories,
+      relations : rawValue.relations,
+      type_id : rawValue.type,
+      reach_id : rawValue.reach,
+      user_id : '1',
+      status_id : 1,
       content : toHTML(rawValue.content),
       file : rawValue.file_upload
     }
-    console.log(body)
+    console.log(body);
+    
+    this.resourceService.createResource(body).subscribe((resource) => {
+      console.log(resource);
+      
+    })
   }
 }
