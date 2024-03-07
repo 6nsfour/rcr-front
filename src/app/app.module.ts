@@ -13,6 +13,7 @@ import {FavoritesComponent} from "./favorites/favorites.component";
 import { CreationComponent } from './creation/creation.component';
 import { NgxEditorModule } from "ngx-editor";
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ResourceViewPanelComponent } from './resource-view-panel/resource-view-panel.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     HeaderComponent,
     ResourceCardComponent,
     CreationComponent,
+    ResourceViewPanelComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FavoritesComponent,
     NgxEditorModule,
     NgSelectModule,
   ],

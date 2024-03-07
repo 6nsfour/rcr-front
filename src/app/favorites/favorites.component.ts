@@ -2,16 +2,17 @@ import { Component } from '@angular/core';
 import {FavoritesService} from "../service/favorites.service";
 import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
 import {Subscription} from "rxjs";
+import { ResourceService } from '../service/resource.service';
 
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',
-  standalone: true,
   styleUrl: './favorites.component.scss'
 })
 export class FavoritesComponent {
   constructor(
     private favoritesService: FavoritesService,
+    private resourceService: ResourceService,
   ) {}
 
   filteredFavorite: any = null;
@@ -20,6 +21,9 @@ export class FavoritesComponent {
     this.getFavorites("1")
   }
 
+  goToResourcePanel(id: any): void { 
+    this.resourceService.goToResourcePanel(id)
+  }
 
 
    getFavorites(user_id: String): Subscription {

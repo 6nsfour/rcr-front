@@ -1,0 +1,21 @@
+<app-header />
+@if (resource) {
+    <div class="grid grid-cols-5 gap-5 mt-5">
+       <div>
+          <app-favorites />
+       </div>
+       <div class="col-span-3 rounded-xl">
+        <div class="bg-neutral rounded-lg resource-card p-5">
+            <p class="font-semibold text-4xl text-center mb-2 underline">{{ resource.title }}</p>
+            <p class="font-thin text-xs underline underline-offset-4 py-4 decoration-0">Crée / Editer le {{ resource.updated_at | date }}</p>
+            <div class="flex justify-center">
+                <img src="../../assets/no-image.png" class="image items-center p-5" alt="no_image">
+            </div>
+            <div class="break-words">
+                {{resource.content}}
+            </div>
+        </div>
+       </div>
+       <div class="bg-black"></div>
+    </div>
+}

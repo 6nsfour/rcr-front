@@ -1,20 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ResourceService } from '../service/resource.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnDestroy {
 
   constructor(
     private cookieService: CookieService,
     private resourceService: ResourceService,
     private router: Router,
   ) {}
+
+  ngOnDestroy(): void {
+    this.getRelation().unsubscribe();
+    this.getType().unsubscribe();
+    this.getCategory().unsubscribe();
+    this.getResources().unsubscribe();
+  }
 
   ngOnInit(): void {
     this.getResources()
@@ -38,26 +46,32 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
-  getType(): void {
-    this.resourceService.getTypes().subscribe((type: any) => {
+  goToResourcePanel(id: number): void {
+    this.resourceService.goToResourcePanel(id);
+  }
+
+  getType(): Subscription {
+    return this.resourceService.getTypes().subscribe((type: any) => {
       this.resourceType = type;
     })
   }
 
-  getRelation(): void {
-    this.resourceService.getRelations().subscribe((relations: any) => {
+  getRelation(): Subscription {
+    return this.resourceService.getRelations().subscribe((relations: any) => {
       this.resourceRelations = relations;
     })
   }
 
-  getCategory(): void {
-    this.resourceService.getCategories().subscribe((categories: any) => {
+  getCategory(): Subscription {
+    return this.resourceService.getCategories().subscribe((categories: any) => {
       this.resourceCategories = categories;
     })
   }
 
-  getResources(): void {
-    this.resourceService.getResources().subscribe((resources: any) => {
+  getResources(): Subscription {
+    return this.resourceService.getResources().subscribe((resources: any) => {
+      console.log(resources);
+      
       return this.resources = resources;
     })
   }
@@ -66,4 +80,6 @@ export class HomeComponent implements OnInit {
     const tokenData = this.cookieService.get('authToken');
     console.log(tokenData);
   }
+
+  
 }

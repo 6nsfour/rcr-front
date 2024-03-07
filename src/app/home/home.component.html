@@ -40,7 +40,7 @@
       <div class="card resource-card overflow-scroll">
          <div class="card-body">
             @for (resource of resources; track $index) {
-            <app-resource-card [resource]="resource" class="border-b p-4 border-black" />
+            <app-resource-card [resource]="resource" (click)="goToResourcePanel(resource.id)" class="border-b p-4 border-black" />
             }
          </div>
       </div>
