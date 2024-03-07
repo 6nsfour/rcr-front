@@ -1,49 +1,99 @@
+<body class="bg-gradient-to-b from-blue-100 min-h-screen to-blue-300">
 <app-header />
-<div class="grid grid-cols-5 gap-5 mt-5">
-   <div>
-      <app-favorites />
-   </div>
-   <div class="col-span-3 bg-white rounded-xl">
-      <div class="flex justify-between items-center p-6">
-         <div class="flex space-x-10 items-center">
-            <div class="text-3xl font-bold">Ressources</div>
-            <div class="dropdown">
-               <div tabindex="0" role="button" class="">Categorie<i class="fa-solid fa-caret-down px-3"></i></div>
-               <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52">
-                  @for (categorie of resourceCategories; track $index) {
-                  <li><a>{{categorie.value}}</a></li>
-                  }
-               </ul>
-            </div>
-            <div class="dropdown">
-               <div tabindex="0" role="button" class="">Relation<i class="fa-solid fa-caret-down px-3"></i></div>
-               <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52">
-                  @for (relation of resourceRelations; track $index) {
-                  <li><a>{{relation.value}}</a></li>
-                  }
-               </ul>
-            </div>
-            <div class="dropdown">
-               <div tabindex="0" role="button" class="">Type<i class="fa-solid fa-caret-down px-3"></i></div>
-               <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52">
-                  @for (type of resourceType; track $index) {
-                  <li><a>{{type.value}}</a></li>
-                  }
-               </ul>
-            </div>
-         </div>
-         <div class="bg-base-100 p-1 px-3 rounded-3xl">
-            <input type="text" placeholder="Chercher..." class="bg-base-100">
-            <i class="fa-solid fa-magnifying-glass"></i>
-         </div>
+
+<div class="grid grid-cols-1 md:grid-cols-5 gap-5 pt-5 ">
+
+  <div class="col-span-1 pl-4 hidden md:col-span-1 md:block">
+    <app-favorites></app-favorites>
+  </div>
+
+  <div class="col-span-1 md:col-span-3 bg-white rounded-xl">
+    <div class="flex flex-col justify-between items-center p-4">
+      <div class="flex">
+        <div class="flex space-x-10 items-center">
+          <div class="text-3xl font-bold hidden lg:block">
+            <p class="text-base">
+              Ressources
+            </p>
+          </div>
+          <div class="dropdown hidden md:flex">
+            <div tabindex="0" role="button" class="flex items-center">Categorie<i class="fa-solid fa-caret-down px-3"></i></div>
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52">
+              @for (categorie of resourceCategories; track $index) {
+                <li><a>{{categorie.value}}</a></li>
+              }
+            </ul>
+          </div>
+          <div class="dropdown hidden md:flex">
+            <div tabindex="0" role="button" class="flex items-center">Relation<i class="fa-solid fa-caret-down px-3"></i></div>
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52">
+              @for (relation of resourceRelations; track $index) {
+                <li><a>{{relation.value}}</a></li>
+              }
+            </ul>
+          </div>
+          <div class="dropdown hidden md:flex">
+            <div tabindex="0" role="button" class="flex items-center">Type<i class="fa-solid fa-caret-down px-3"></i></div>
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box w-52">
+              @for (type of resourceType; track $index) {
+                <li><a>{{type.value}}</a></li>
+              }
+            </ul>
+          </div>
+        </div>
+        <div class="flex bg-base-100 p-1 px-3 rounded-3xl items-center w-full md:w-auto md:mt-0">
+          <input type="text" placeholder="Chercher..." class="bg-base-100 w-full focus:outline-none">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
       </div>
-      <div class="card resource-card overflow-scroll">
-         <div class="card-body">
-            @for (resource of resources; track $index) {
-            <app-resource-card [resource]="resource" (click)="goToResourcePanel(resource.id)" class="border-b p-4 border-black" />
+      <div class="flex space-x-10 items-center md:hidden pt-2">
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="flex items-center">Categorie<i class="fa-solid fa-caret-down px-3"></i></div>
+          <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box">
+            @for (categorie of resourceCategories; track $index) {
+              <li><a>{{categorie.value}}</a></li>
             }
-         </div>
+          </ul>
+        </div>
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="flex items-center">Relation<i class="fa-solid fa-caret-down px-3"></i></div>
+          <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-white rounded-box">
+            @for (relation of resourceRelations; track $index) {
+              <li><a>{{relation.value}}</a></li>
+            }
+          </ul>
+        </div>
+        <div class="dropdown">
+          <div tabindex="0" role="button" class="flex items-center">Type<i class="fa-solid fa-caret-down px-3"></i></div>
+          <ul tabindex="0" class="dropdown-content z-[1] menu shadow bg-white rounded-box right-0">
+            @for (type of resourceType; track $index) {
+              <li><a>{{type.value}}</a></li>
+            }
+          </ul>
+        </div>
+
+
       </div>
-   </div>
-   <div class="bg-black"></div>
+    </div>
+    <div class="card resource-card overflow-auto">
+      <div class="card-body grid grid-cols-1">
+        @for (resource of resources; track $index) {
+          <app-resource-card [resource]="resource" (click)="goToResourcePanel(resource.id)" class=""/>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="col-span-1 pr-4 hidden md:block">
+    <app-favorites></app-favorites>
+  </div>
+  <button routerLink="/resource/create" class="flex fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">
+    <i class="fa-regular fa-pen-to-square flex md:hidden p-3"></i>
+    <p class="hidden md:flex">
+      Créer une ressource
+    </p>
+  </button>
+
 </div>
+</body>
+

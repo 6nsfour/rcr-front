@@ -1,7 +1,7 @@
 <div class="flex hover:opacity-50 hover:cursor-pointer transition duration-15">
-    <img src="../../assets/no-image.png" alt="no image" class="thumbnail items-center">
+    <img src="../../assets/no-image.png" alt="no image" class="thumbnail items-center hidden md:flex">
     <div class="flex flex-col">
         <div class="text-2xl underline font-bold mb-2">{{resource.title}}</div>
-        <p class="text-sm">{{ resource.content }}</p>
+        <p class="text-sm overflow-hidden h-12">{{ resource.content }}</p>
     </div>
 </div>
