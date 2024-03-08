@@ -17,6 +17,7 @@ import { ResourceViewPanelComponent } from './resource-view-panel/resource-view-
 import { ProfileComponent } from './profile/profile.component';
 import { ChatComponent } from './chat/chat.component';
 import { CommentsPanelComponent } from './comments-panel/comments-panel.component';
+import { DataManagementComponent } from './data-management/data-management.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CommentsPanelComponent } from './comments-panel/comments-panel.componen
     ProfileComponent,
     ChatComponent,
     CommentsPanelComponent,
+    DataManagementComponent,
   ],
   imports: [
     BrowserModule,
