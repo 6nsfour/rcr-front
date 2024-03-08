@@ -40,6 +40,16 @@ export class ResourceService {
     return this.http.get(`${this.sharedService.apiUrl}/reach`, {headers})
   }
 
+  deleteResource(id: number): Observable<any> {
+    const headers = this.sharedService.getAuthHeaders();
+    return this.http.delete(`${this.sharedService.apiUrl}/resources/${id}`, { headers })
+  }
+
+  updateResource(body: any, id: number): Observable<any> {
+    const headers = this.sharedService.getAuthHeaders();
+    return this.http.patch(`${this.sharedService.apiUrl}/resources/${id}`, body, { headers })
+  }
+
   getRelations(): Observable<any> {
     const headers = this.sharedService.getAuthHeaders();
     return this.http.get(`${this.sharedService.apiUrl}/relation`, {headers})

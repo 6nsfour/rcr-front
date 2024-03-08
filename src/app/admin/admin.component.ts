@@ -20,7 +20,8 @@ export class AdminComponent implements OnInit {
 
   isModalOpen = false;
   selectedResource: any = {
-    reach: { value: '' }
+    reach: { value: null },
+    status: { value: null }
   };
 
   resources: any = [];
@@ -28,14 +29,8 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.getResources()
-    //this.getCategories()
   }
-/*
-  getCategories(): void{
-    this.resourceService.getCategories().subscribe((categories: any) => {
-      return this.categories = categories;
-    })
-  }*/
+
   getResources(): void {
     this.resourceService.getResources().subscribe((resources: any) => {
       console.log(resources)
@@ -44,18 +39,14 @@ export class AdminComponent implements OnInit {
   }
 
   deleteResource(id: number): void {
-    if (confirm('Êtes-vous sûr de vouloir supprimer cette ressource ?')) {
       this.resourceService.deleteResource(id).subscribe({
         next: () => {
-          alert('Ressource supprimée avec succès.');
-          //this.resources = this.resources.filter(resource => resource.id !== id);
+          this.getResources();
         },
         error: (error) => {
           console.error('Erreur lors de la suppression de la ressource', error);
-          alert('Erreur lors de la suppression de la ressource.');
         }
       });
-    }
   }
 
   openEditModal(resource: any): void {
@@ -68,15 +59,16 @@ export class AdminComponent implements OnInit {
     this.isModalOpen = false;
   }
 
-  updateResource(id: number, resourceData: any): void {
-    this.resourceService.updateResource(id, resourceData).subscribe({
-      next: (response) => {
-        console.log('Ressource mise à jour avec succès', response);
+  validateResource(id: number): void {
+    const body = { status_id: 3  }
+    this.resourceService.updateResource(body, id).subscribe({
+      next: () => {
+        console.log('Ressource mise à jour avec succès');
         this.closeModal();
         this.getResources();
       },
-      error: (error) => {
-        console.error('Erreur lors de la mise à jour de la ressource', error);
+      error: () => {
+        console.error('Erreur lors de la mise à jour de la ressource');
       }
     });
   }
