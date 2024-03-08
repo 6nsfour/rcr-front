@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FavoritesService} from "../service/favorites.service";
 import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-favorites',
@@ -20,8 +21,9 @@ export class FavoritesComponent {
   }
 
 
-   getFavorites(user_id: String): any {
-    this.favoritesService.getFavorites().subscribe({
+
+   getFavorites(user_id: String): Subscription {
+    return this.favoritesService.getFavorites().subscribe({
       next: (favorites: any) => {
         console.log(favorites);
         this.filteredFavorite =  favorites.filter((favorite: any) => favorite.user_id === user_id);
@@ -29,4 +31,6 @@ export class FavoritesComponent {
       error: err => console.log(err)
     })
   }
+
+
 }

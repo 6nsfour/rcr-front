@@ -10,6 +10,9 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { ResourceCardComponent } from './resource-card/resource-card.component';
 import {FavoritesComponent} from "./favorites/favorites.component";
+import { CreationComponent } from './creation/creation.component';
+import { NgxEditorModule } from "ngx-editor";
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,7 @@ import {FavoritesComponent} from "./favorites/favorites.component";
     HomeComponent,
     HeaderComponent,
     ResourceCardComponent,
+    CreationComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +31,8 @@ import {FavoritesComponent} from "./favorites/favorites.component";
     ReactiveFormsModule,
     HttpClientModule,
     FavoritesComponent,
+    NgxEditorModule,
+    NgSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
