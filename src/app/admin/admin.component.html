@@ -1,0 +1,102 @@
+<div class="overflow-x-auto">
+  <table class="table w-full">
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Titre</th>
+      <th>Contenu</th>
+      <th>Gérer</th>
+      <th>Supprimer</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (resource of resources; track $index) {
+        <tr class="hover">
+          <td data-label="Id">{{ resource.id }}</td>
+          <td data-label="Titre">{{ resource.title }}</td>
+          <td data-label="Contenu">{{ resource.content }}</td>
+          <td data-label="Modifier"><button (click)="openEditModal(resource)"><i class="fa-solid fa-wrench"></i></button></td>
+          <td data-label="Supprimer"><button (click)="deleteResource(resource.id)"><i class="fa-solid fa-trash"></i></button></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+  <!-- Modal -->
+
+    <dialog id="editResourceModal" class="modal" [open]="isModalOpen">
+      <div class="modal-box w-full max-w-md mx-auto mt-20 relative">
+        <button class="btn btn-sm btn-circle absolute right-2 top-2" (click)="closeModal()">✕</button>
+        <h3 class="font-bold text-lg text-center">Gérer la Ressource</h3>
+        <form class="py-4">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text font-bold text-lg">Titre</span>
+            </label>
+            <div>{{selectedResource.title}}</div>
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text font-bold text-lg">Contenu</span>
+            </label>
+            <div class="truncate">{{selectedResource.content}}</div>
+          </div>
+          <div>
+            <label class="label">
+              <span class="label-text font-bold text-lg">Catégorie</span>
+            </label>
+            @for (categories of selectedResource.resourceCategories; track $index) {
+  
+              <div>{{categories.category.value}}</div>
+            }
+          </div>
+        <div>
+          <label class="label">
+            <span class="label-text font-bold text-lg">Portée</span>
+          </label>
+          <div>{{selectedResource.reach.value}}</div>
+        </div>
+  
+          <div>
+            <label class="label">
+              <span class="label-text font-bold text-lg">Relation</span>
+            </label>
+            @for (relations of selectedResource.resourceRelations; track $index) {
+              <div>{{relations.relation.value}}</div>
+            }
+          </div>
+  
+          <div>
+            <label class="label">
+              <span class="label-text font-bold text-lg">Status</span>
+            </label>
+            @switch (selectedResource.status.value) {
+              @case ("not_verified") {
+                  <div>Non verifié</div>
+              }
+              @case ("pending") {
+                  <div>En attente de validation</div>
+              }
+              @case ("verified") {
+                  <div>Verifié</div>
+              }
+              @case ("archived") {
+                  <div>Archivé</div>
+              }
+          }
+          </div>
+  
+  
+      <div class="modal-action justify-between">
+        @if (selectedResource.status.value != 'archived') {
+          <button [class.is-verified]="selectedResource.status.value === 'verified'" class="btn btn-warning w-1/3" (click)="archiveResource(selectedResource.id)">Archiver</button>
+          @if (selectedResource.status.value === 'not_verified') {
+            <button class="btn btn-success w-2/3" (click)="validateResource(selectedResource.id)">Publier</button>
+          }
+        }
+      </div>
+      </form>
+      </div>
+    </dialog>
+

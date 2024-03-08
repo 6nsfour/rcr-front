@@ -7,6 +7,7 @@ import {CreationComponent} from "./creation/creation.component";
 import { ResourceViewPanelComponent } from './resource-view-panel/resource-view-panel.component';
 import {ProfileComponent} from "./profile/profile.component";
 import {DataManagementComponent} from "./data-management/data-management.component";
+import {AdminComponent} from "./admin/admin.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -16,8 +17,10 @@ const routes: Routes = [
   { path: 'resource/view/:id', component: ResourceViewPanelComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'gestion_donnees', component: DataManagementComponent },
+  { path: 'admin', component: AdminComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
+
 ];
 
 @NgModule({
