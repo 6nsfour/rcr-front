@@ -14,6 +14,9 @@ import { CreationComponent } from './creation/creation.component';
 import { NgxEditorModule } from "ngx-editor";
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ResourceViewPanelComponent } from './resource-view-panel/resource-view-panel.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ChatComponent } from './chat/chat.component';
+import { CommentsPanelComponent } from './comments-panel/comments-panel.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { ResourceViewPanelComponent } from './resource-view-panel/resource-view-
     CreationComponent,
     ResourceViewPanelComponent,
     FavoritesComponent,
+    ProfileComponent,
+    ChatComponent,
+    CommentsPanelComponent,
   ],
   imports: [
     BrowserModule,

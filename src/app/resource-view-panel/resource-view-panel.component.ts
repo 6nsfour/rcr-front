@@ -16,6 +16,7 @@ export class ResourceViewPanelComponent implements OnInit {
   ) {}
 
   resource: any;
+  isStarClicked: any = false;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
@@ -26,12 +27,17 @@ export class ResourceViewPanelComponent implements OnInit {
   assignResource(): void {
     this.getResource().subscribe((resource: any) => {
       console.log(resource);
-      
+
       return this.resource = resource
     })
   }
 
   getResource(): Observable<any> {
     return this.resourceService.getResourceById(this.route.snapshot.paramMap.get('id') as string)
+  }
+
+  toggleStar() {
+    this.isStarClicked =!this.isStarClicked
+    console.log(this.isStarClicked)
   }
 }
