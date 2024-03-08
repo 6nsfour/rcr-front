@@ -59,8 +59,24 @@ export class AdminComponent implements OnInit {
     this.isModalOpen = false;
   }
 
+
+
   validateResource(id: number): void {
     const body = { status_id: 3  }
+    this.resourceService.updateResource(body, id).subscribe({
+      next: () => {
+        console.log('Ressource mise à jour avec succès');
+        this.closeModal();
+        this.getResources();
+      },
+      error: () => {
+        console.error('Erreur lors de la mise à jour de la ressource');
+      }
+    });
+  }
+
+  archiveResource(id: number): void {
+    const body = { status_id: 4  }
     this.resourceService.updateResource(body, id).subscribe({
       next: () => {
         console.log('Ressource mise à jour avec succès');
