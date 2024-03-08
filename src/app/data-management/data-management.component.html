@@ -1,0 +1,94 @@
+<body class="bg-gradient-to-b from-blue-100 min-h-screen to-blue-300">
+<app-header />
+
+<div class="grid grid-cols-1 md:grid-cols-5 gap-5 pt-5 ">
+
+  <div class="col-span-1 pl-4 hidden md:col-span-1 md:block">
+    <app-favorites></app-favorites>
+  </div>
+
+  <div class="col-span-1 md:col-span-3 bg-white rounded-xl ">
+  <div class="flex flex-col align-middle items-center">
+    <div class="py-4">
+      <p class="text-7xl font-bold">Gestion des données</p>
+    </div>
+  </div>
+    <div class="">
+      <p class="text-4xl font-semibold px-5">
+        1. Données personnelles
+      </p>
+      <div class="w-5/6 pl-14">
+        <p>
+          Dans le cadre de l'inscription à notre service de newsletter sur notre site Web, il se peut que nous vous demandions de fournir votre adresse e-mail. Cette information est uniquement utilisée dans le but de vous envoyer nos newsletters et n'est en aucun cas associée aux données de navigation que nous pourrions éventuellement recueillir sur le site.
+
+          Nous tenons à souligner que nous respectons votre vie privée et que nous ne partageons pas vos informations personnelles avec des tiers sans votre consentement explicite.
+
+          Vous avez également la possibilité de vous désabonner à tout moment en utilisant le lien de désinscription fourni en bas de chaque e-mail que vous recevez de notre part. En cliquant sur ce lien, votre adresse e-mail sera automatiquement supprimée de notre base de données, et vous ne recevrez donc plus de communications de notre part par e-mail. Nous accordons une grande importance à votre confort et à votre tranquillité d'esprit dans la gestion de vos abonnements.
+        </p>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="">
+      <p class="text-4xl font-semibold px-5">
+        2. Données relatives à la navigation
+      </p>
+      <div class="w-5/6 pl-14">
+        <p>
+          Dans le cadre de nos activités statistiques, nous pouvons collecter certaines données relatives à votre navigation sur notre site. Ces données comprennent : <br>
+
+          - Le type de périphérique que vous utilisez <br>
+          - La marque de votre périphérique <br>
+          - Votre système d'exploitation <br>
+          - La résolution de votre écran <br>
+          - Votre navigateur web <br>
+          - Les plugins multimédias de votre navigateur <br>
+          - Votre provenance géographique (pays) <br>
+          - Vos horaires de connexion au site <br>
+          - Les pages que vous avez visitées <br>
+          - Votre adresse IP anonymisée <br>
+
+          Nous utilisons ces données dans le but d'analyser le comportement global des utilisateurs et d'adapter nos services en conséquence, afin de vous offrir la meilleure expérience possible sur notre site. <br>
+
+          Si vous souhaitez ne pas faire partie de ces données, vous pouvez exercer ce droit en décochant la case correspondante dans l'encadré ci-dessous. Votre confidentialité et votre choix sont essentiels pour nous, et nous respectons pleinement votre préférence en matière de collecte de données. <br>
+        </p>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="">
+      <p class="text-4xl font-semibold px-5">
+        3. Gestion des données
+      </p>
+      <div class="w-5/6 pl-14 pb-4">
+        <p>
+          L'ensemble des données que nous recueillons est soigneusement stocké sur nos serveurs d'hébergement sécurisés, et nous prenons des mesures strictes pour garantir leur confidentialité et leur sécurité. Nous tenons à souligner que ces données ne sont en aucun cas partagées, transférées, cédées ou vendues à des tiers, conformément aux lois et réglementations en vigueur.
+          <br>
+
+          Pour toute question supplémentaire concernant le traitement de vos données ou pour exercer vos droits en matière de protection des données, nous vous invitons à nous contacter par e-mail à l'adresse suivante : contact&#64;beta.gouv.fr.
+          <br>
+
+          Nous nous engageons à vous fournir toutes les informations nécessaires et à répondre à vos préoccupations dans les meilleurs délais. Votre confiance est primordiale pour nous, et nous mettons tout en œuvre pour garantir la transparence et le respect de vos droits en matière de confidentialité des données.
+          <br>
+
+          Veuillez également noter que vous avez le droit de contacter les autorités compétentes en matière de protection des données, telles que la Commission nationale de l'informatique et des libertés (CNIL), en cas de litige ou de préoccupation concernant le traitement de vos données personnelles.
+          <br>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-span-1 pr-4 hidden md:block">
+    <app-chat></app-chat>
+  </div>
+  <button routerLink="/resource/create" class="flex fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">
+    <i class="fa-regular fa-pen-to-square flex md:hidden p-3"></i>
+    <p class="hidden md:flex">
+      Créer une ressource
+    </p>
+  </button>
+
+</div>
+</body>
+

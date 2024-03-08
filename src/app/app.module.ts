@@ -13,6 +13,11 @@ import {FavoritesComponent} from "./favorites/favorites.component";
 import { CreationComponent } from './creation/creation.component';
 import { NgxEditorModule } from "ngx-editor";
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ResourceViewPanelComponent } from './resource-view-panel/resource-view-panel.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ChatComponent } from './chat/chat.component';
+import { CommentsPanelComponent } from './comments-panel/comments-panel.component';
+import { DataManagementComponent } from './data-management/data-management.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +28,12 @@ import { NgSelectModule } from '@ng-select/ng-select';
     HeaderComponent,
     ResourceCardComponent,
     CreationComponent,
+    ResourceViewPanelComponent,
+    FavoritesComponent,
+    ProfileComponent,
+    ChatComponent,
+    CommentsPanelComponent,
+    DataManagementComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +41,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FavoritesComponent,
     NgxEditorModule,
     NgSelectModule,
   ],

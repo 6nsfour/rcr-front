@@ -1,14 +1,14 @@
-<div class="card favorite-card bg-neutral">
+<div class="card favorite-card bg-white ">
   <div class="card-title bg-black rounded-t-xl">
      <div class="flex items-center space-x-4 p-3">
         <i class="fa-solid fa-star text-neutral scale-150"></i>
         <div class="text-white font-extrabold">Favoris</div>
      </div>
   </div>
-  <div class="card pl-4 pr-4 overflow-scroll">
+  <div class="card pl-4 pr-4 overflow-auto">
      @for (favorite of filteredFavorite; track $index) {
      <div class=" text-center border-b border-black pb-2 mt-2">
-        <a href="https://youtube.com" class="underline-offset-2 font-medium">
+        <a (click)="goToResourcePanel(favorite.resource.id)" class="underline-offset-2 font-medium cursor-pointer">
         {{ favorite.resource.title }}
         </a>
      </div>

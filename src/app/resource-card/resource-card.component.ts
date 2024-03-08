@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-resource-card',
@@ -6,6 +7,14 @@ import { Component, Input } from '@angular/core';
   styleUrl: './resource-card.component.scss'
 })
 export class ResourceCardComponent {
+  constructor(
+    private router: Router
+  ) {}
+
   @Input()
   resource: any;
+  
+  goToResourcePanel(): void {
+    this.router.navigate(['resource-panel'])
+  }
 }

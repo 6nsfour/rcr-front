@@ -1,0 +1,59 @@
+<body class="bg-gradient-to-b from-blue-100 min-h-screen to-blue-300">
+<app-header />
+
+<div class="grid grid-cols-1 md:grid-cols-5 gap-5 pt-5 ">
+  <div class="col-span-1 pl-4 hidden md:col-span-1 md:block">
+    <app-favorites></app-favorites>
+  </div>
+  @if (resource) {
+    <div class="col-span-1 md:col-span-3 bg-white rounded-xl">
+
+      <div class="col-span-3 rounded-3xl">
+
+        <div class="bg-white rounded-3xl resource-card p-5">
+          <div class="flex justify-between items-center">
+          <div class="w-1/4">
+            <button routerLink="/home">
+              <i class="fa-solid fa-arrow-left h-8"></i>
+            </button>
+          </div>
+          <div class="w-2/4 text-center">
+            <p class="font-semibold text-4xl mb-2 underline">{{ resource.title }}</p>
+          </div>
+            <div class="flex justify-end flex-grow">
+              <button (click)="toggleStar()">
+                <div [hidden]="isStarClicked">
+                <i class="fa-regular fa-star h-10"  style="color: #FFD43B;"></i>
+                </div>
+                <div [hidden]="!isStarClicked">
+                <i class="fa-solid fa-star h-10"  style="color: #FFD43B;"></i>
+                </div>
+              </button>
+            </div>
+
+        </div>
+
+          <p class="font-thin text-xs underline underline-offset-4 py-4 decoration-0">Créé / Edité le {{ resource.updated_at | date }}</p>
+          <div class="flex justify-center">
+            <img src="../../assets/no-image.png" class="image items-center p-5" alt="no_image">
+          </div>
+          <div class="break-words">
+            {{resource.content}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+  }
+  <div class="col-span-1 pr-4 hidden md:block">
+    <app-comments-panel></app-comments-panel>
+  </div>
+</div>
+
+<button routerLink="/resource/create" class="flex fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-3xl">
+  <i class="fa-regular fa-pen-to-square flex md:hidden p-3"></i>
+  <p class="hidden md:flex">
+    Créer une ressource
+  </p>
+</button>
+</body>
