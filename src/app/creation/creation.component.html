@@ -2,7 +2,7 @@
 
 <body class="bg-gradient-to-b from-blue-100 to-blue-300 min-h-[85vh]">
 
-<div class="grid grid-cols-5 gap-5 py-3.5">
+<div class="md:grid md:grid-cols-5 md:gap-5 p-3.5 block">
   <div></div>
   <div class="col-span-3 rounded-3xl bg-white">
     <form action="" [formGroup]="createResourceForm" (ngSubmit)="createResource()">
@@ -22,9 +22,9 @@
             <div class="w-full">
               <p class="font-bold">Catégorie</p>
               <ng-select
-                [items]="categories" 
-                bindLabel="value" 
-                bindValue="id" 
+                [items]="categories"
+                bindLabel="value"
+                bindValue="id"
                 [multiple]="true"
                 formControlName="categories"
               >
@@ -33,9 +33,9 @@
             <div class="w-full">
               <p class="font-bold">Relation</p>
               <ng-select
-                [items]="relations" 
-                bindLabel="value" 
-                bindValue="id" 
+                [items]="relations"
+                bindLabel="value"
+                bindValue="id"
                 [multiple]="true"
                 formControlName="relations"
               >
@@ -44,9 +44,9 @@
             <div class="w-full">
               <p class="font-bold">Type</p>
               <ng-select
-                [items]="types" 
-                bindLabel="value" 
-                bindValue="id" 
+                [items]="types"
+                bindLabel="value"
+                bindValue="id"
                 formControlName="type"
               >
               </ng-select>
@@ -54,9 +54,9 @@
             <div class="w-full">
               <p class="font-bold">Portée</p>
               <ng-select
-                [items]="reachs" 
-                bindLabel="value" 
-                bindValue="id" 
+                [items]="reachs"
+                bindLabel="value"
+                bindValue="id"
                 formControlName="reach"
               >
               </ng-select>
@@ -70,17 +70,12 @@
           <ngx-editor-menu [editor]="editor"></ngx-editor-menu>
           <ngx-editor [editor]="editor" [disabled]="false" formControlName="content" placeholder="Écrivez ici..."></ngx-editor>
         </div>
-        <div class="mx-auto w-1/2 h-full mt-3 md:hidden">
+        <div class="mx-auto w-5/6 h-full mt-3">
           <button class="rounded-3xl bg-neutral w-full hover:bg-opacity-50 cursor-pointer disabled:bg-gray bg-opacity-100">
             <i class="fa-regular fa-paper-plane h-6 p-1" style="color: #000000;"></i>
           </button>
         </div>
 
-      </div>
-      <div class="absolute right-0 bottom-0 mr-7 mb-7 items-center justify-center hidden md:block">
-        <button class="rounded-3xl bg-neutral pt-4 pr-8 pb-4 pl-8 hover:bg-opacity-50 disabled:bg-opacity-50">
-          <i class="fa-regular fa-paper-plane" style="color: #000000;"></i>
-        </button>
       </div>
     </form>
   </div>
